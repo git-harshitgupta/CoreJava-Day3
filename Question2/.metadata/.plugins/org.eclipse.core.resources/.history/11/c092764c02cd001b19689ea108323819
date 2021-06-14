@@ -1,0 +1,71 @@
+package tester;
+import com.geometry.Point2D;
+
+
+
+import java.util.Scanner;
+
+class TestPoint {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Point2D[] array = new Point2D[10];
+        while(true) {
+        	System.out.println("1.Plot a new point Input should be - index x-coordinate y-coordinate");
+        	System.out.println("2.Display all the point");
+        	System.out.println("3.Test equality of 2 point");
+        	System.out.println("4.Calculate distance between two point");
+        	System.out.println("10.Exit");
+        	System.out.println("Enter the choose");
+        	switch (scanner.nextInt()) {
+			case 1:
+				int x = scanner.nextInt();
+				int y = scanner.nextInt();
+				int index = scanner.nextInt();
+				if(index>=0&&index<=9) {
+					Point2D point2d = new Point2D(x, y);
+					array[index] = point2d;
+				}
+				else {
+					System.err.println("Invalid index - out of range");
+				}
+				
+				break;
+			case 2:
+				for(Point2D e : array) {
+					if(e!=null) {
+						e.getDetails();
+					}}
+					break;
+			case 3:
+				System.out.println("Enter the first index");
+				int index1 = scanner.nextInt();
+				System.out.println("Enter the second index");
+				int index2 = scanner.nextInt();
+				if(array[index1]==null || array[index2]==null) {
+					System.err.println("No point ploted here");
+				}
+				else {
+					array[index1].isEqual(array[index2]);
+				}
+				break;
+			case 4:
+				System.out.println("Enter the index of points between whom the distance is to be calculated");
+				if (array[scanner.nextInt()]==null || array[scanner.nextInt()]==null) {
+					System.err.println("No point ploted here");	
+				}
+				else {
+					array[scanner.nextInt()].isEqual(array[scanner.nextInt()]);
+				}
+				break;
+			default:
+			case 10:
+				System.exit(0);
+				break;
+			}
+        	scanner.close();
+        	
+        }
+        
+
+    }    
+}
